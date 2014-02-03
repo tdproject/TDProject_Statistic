@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- 
+/**
+ * TDProject_Statistic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ */
+-->
+<processor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.techdivision.com/schema/session-1.0.0.xsd"
+	name="DomainProcessor" type="session" default-application="statistic"
+	deployment-descriptor="TDProject/META-INF/deployment-descriptor.xml">
+	<description>This class represents an object oriented way to manipulate data in the database.</description>
+	<methods>
+		<method name="getUserPerformanceOverviewData" type="abstract">
+            <description><![CDATA[This method returns all user performance statistics.]]></description>
+            <params/>
+            <return type="TechDivision_Collections_ArrayList">
+                <description><![CDATA[Returns a ArrayList with all user performance statistics.]]></description>
+            </return>
+        </method>
+        <method name="getUserPerformanceViewData" type="abstract">
+            <description><![CDATA[This method returns all user performance statistics.]]></description>
+            <params>
+                <param name="userId" type="TechDivision_Lang_Integer">
+                    <description><![CDATA[Holds the ID of the user to load the data for]]></description>
+                </param>
+            </params>
+            <return type="TDProject_Statistic_Common_ValueObjects_UserPerformanceViewData">
+                <description><![CDATA[Returns a DTO initialized with the data of the requested user performance.]]></description>
+            </return>
+        </method>
+        <method name="reorgUserPerformance" type="abstract">
+            <description><![CDATA[This method reorganizes the user performance statistics.]]></description>
+            <params/>
+            <return type="void">
+                <description><![CDATA[Returns nothing.]]></description>
+            </return>
+        </method>
+	</methods>
+</processor>

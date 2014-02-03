@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * TDProject_Statistic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ */
+-->
+<resources>
+    <resource name="/statistic">
+        <methods>
+            <method name="__default">
+                <roles>
+                    <role name="Administrator"/>
+                </roles>
+            </method>
+        </methods>
+    </resource>
+    <resource name="/user/performance">
+        <methods>
+            <method name="__default">
+                <roles>
+                    <role name="Administrator"/>
+                </roles>
+            </method>
+            <method name="view">
+                <roles>
+                    <role name="Administrator"/>
+                </roles>
+            </method>
+            <method name="reorg">
+                <roles>
+                    <role name="Administrator"/>
+                </roles>
+            </method>
+        </methods>
+    </resource>
+</resources>

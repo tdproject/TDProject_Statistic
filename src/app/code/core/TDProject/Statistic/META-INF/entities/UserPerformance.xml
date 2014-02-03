@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * TDProject_Statistic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ */
+-->
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.techdivision.com/schema/entity-1.0.0.xsd"
+	name="UserPerformance" type="entity">
+    <description>This class represents an object oriented way to manipulate data in the database.</description>
+    <members>
+        <member name="userPerformanceId" sqlname="user_performance_id" type="Integer" initial="0"/>
+    	<member name="userIdFk" sqlname="user_id_fk" type="Integer" initial="null"/>
+    	<member name="month" sqlname="month" type="Integer" initial="0"/>
+    	<member name="year" sqlname="year" type="Integer" initial="0"/>
+        <member name="performance" sqlname="performance" type="Integer" initial="0"/>
+        <member name="billableHours" sqlname="billable_hours" type="Integer" initial="0"/>
+        <member name="costs" sqlname="costs" type="Integer" initial="0"/>
+        <member name="turnover" sqlname="turnover" type="Integer" initial="0"/>
+	</members>
+	<querys>
+		<query>
+			<description><![CDATA[Returns all all user performances.]]></description>
+			<method name="findAll">
+				<params/>
+			</method>
+			<result-type>ArrayList</result-type>
+			<sql><![CDATA[SELECT user_performance_id FROM user_performance ORDER BY month DESC, year DESC]]></sql>
+		</query>
+		<query>
+			<description><![CDATA[Returns the performances for the user with the passed ID.]]></description>
+			<method name="findAllByUserIdFk">
+				<params>
+					<param name="userIdFk" type="Integer"/>
+				</params>
+			</method>
+			<result-type>ArrayList</result-type>
+			<sql><![CDATA[SELECT user_performance_id FROM user_performance WHERE user_id_fk = ? ORDER BY year DESC, month DESC]]></sql>
+		</query>
+        <query>
+            <description><![CDATA[Returns the performances for the user with the passed ID, the year and month.]]></description>
+            <method name="findAllByUserIdFkAndYearAndMonth">
+                <params>
+                    <param name="userIdFk" type="Integer"/>
+                    <param name="year" type="Integer"/>
+                    <param name="month" type="Integer"/>
+                </params>
+            </method>
+            <result-type>ArrayList</result-type>
+            <sql><![CDATA[SELECT user_performance_id FROM user_performance WHERE user_id_fk = ? AND year = ? AND month = ?]]></sql>
+        </query>
+	</querys>
+	<tables>
+		<table type="InnoDB" default-charset="utf8" collate="utf8_unicode_ci" auto-increment="1" name="user_performance">
+			<keys>
+				<pk name="user_performance_pk" field="user_performance_id"/>
+				<index name="user_performance_idx_01" field="user_id_fk"/>
+				<fk name="user_performance_fk_01" target-table="user" field="user_id_fk" target-field="user_id"/>
+			</keys>	
+			<fields>
+				<field name="user_performance_id" type="int" length="10" nullable="false" autoincrement="true"/>
+				<field name="user_id_fk" type="int" length="10" nullable="false"/>
+				<field name="month" type="int" length="10" nullable="false"/>
+				<field name="year" type="int" length="10" nullable="false"/>
+                <field name="performance" type="int" length="10" nullable="false"/>
+                <field name="billable_hours" type="int" length="10" nullable="false"/>
+                <field name="costs" type="int" length="10" nullable="false"/>
+                <field name="turnover" type="int" length="10" nullable="false"/>
+			</fields>
+		</table>
+	</tables>
+</entity>
