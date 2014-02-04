@@ -33,7 +33,7 @@
             </pearinstaller>
 			<package>
 				<name>TDProject_Project</name>
-				<channel>project.tdintern.de/tdproject</channel>
+				<channel>pear.appserver.io/tdproject</channel>
 				<min>0.5.6</min>
 			</package>
         </required>
